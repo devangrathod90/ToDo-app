@@ -36,13 +36,6 @@ const item3 = new Item({
 const defaultItems = [item1, item2, item3];
 
 app.get("/", function (req, res) {
-  var today = new Date();
-  var options = {
-    weekday: "long",
-    day: "numeric",
-    month: "short",
-  };
-  var day = today.toLocaleDateString("US", options);
 
   Item.find({}, function (err, foundItems) {
     if(foundItems.length === 0){
@@ -55,7 +48,7 @@ app.get("/", function (req, res) {
         res.redirect("/")
       });
     }else{
-      res.render("list", { kindOfDay: day, newListItems: foundItems });
+      res.render("list", { newListItems: foundItems });
     }
   });
 });
