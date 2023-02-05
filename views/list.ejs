@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>to do list </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/d46ca245f4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1 class="logo">TODO<i class="fa-solid fa-pencil"></i></h1>
+    <div class="date">
+        <h1 class="date-text">
+            <%= kindOfDay %>
+        </h1>
+    </div>
+
+    <div class="box" id="heading">
+
+        <% newListItems.forEach(function(item) {%>
+        <form action="/delete" method="post">
+            <div class="item">
+                <input type="checkbox" class="checkbox" name="checkbox" value="<%= item._id %>" onchange="this.form.submit()">
+                <p><%= item.name%></p>
+            </div>
+        </form>
+
+        <%})%>
+
+
+            <form action="/" method="post">
+                <input type="text" name="newItem" autocomplete="off" placeholder="New Item">
+                <button type="submit" name="button">+</button>
+            </form>
+    </div>
+</body>
+
+</html>
